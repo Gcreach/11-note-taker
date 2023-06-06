@@ -13,9 +13,11 @@ app.get('/', (req, res) => {
     res.sendFile(patch.join(__dirname, `/public/index.html`));
 });
 
-app.get('/api/notes', (req, res) => {
+app.get('*', (req, res) => res.sendFile(path.join(__dirname, '/public/index.html')));
+
+app.get('/notes', (req, res) => {
     console.info(`${req.method} request received for notes`);
-    readFromFile('./db/db.json').then((data) => res.json(JSON.parse(data)));
+    res.sendFile(patch.join(__dirname, `/public/index.html`));
 });
 
 app.post('/api/notes', (req, res) => {
